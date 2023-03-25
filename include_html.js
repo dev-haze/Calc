@@ -1,5 +1,6 @@
-function loadHTML(file)
+window.onload = function loadHTML(id,file)
 {
+    echo("start");
     var rawFile = new XMLHttpRequest();
     rawFile.open("GET", file, false);
     rawFile.onreadystatechange = function ()
@@ -9,9 +10,11 @@ function loadHTML(file)
             if(rawFile.status === 200 || rawFile.status == 0)
             {
                 var allText = rawFile.responseText;
-                document.write(allText);
+                //document.write(allText);
+                document.getElementById(id).innerHTML=allText;
             }
         }
     }
     rawFile.send(null);
+    alert("end");
 }
